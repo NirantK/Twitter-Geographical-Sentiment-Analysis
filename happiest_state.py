@@ -62,6 +62,7 @@ states = {
 }
 
 class Tweet:
+    '''Stores the necessary data for each tweet'''
     def __init__(self):
         self.tweet = ""
         self.stateCode = ""
@@ -86,7 +87,7 @@ class Tweet:
         return self.score
 
 class tweetScore(object):
-    """docString """
+    """Does the sentimental analysis for each tweet and gives it a score"""
     def __init__(self):
         self.scores = {}
         self.newDict = {}
@@ -119,6 +120,8 @@ class tweetScore(object):
             data[i].setScore(twScore)
         
 class readTweet(object):
+    '''Reads the file with Twitter data into Python objects (dict here) using the json module. 
+    Extracts the tweet text and the associated location data called "stateCode" into the objects of Tweet class'''
     def __init__(self):
         self.data = []
 
@@ -153,6 +156,7 @@ class readTweet(object):
         return self.data
           
 def stateSort(data):
+    '''simply calculates the happiness for each state by iterating through the state dict and data from Twitter'''
     for key in states.keys():
         for i in xrange(len(data)):
             if data[i].getStateCode() == key:
@@ -174,12 +178,12 @@ def main():
     
     stateSort(tw.data)
     maximum = -9999999999999
-    for key in happyState.keys():
+    for key in happyState.keys(): # finds the maximum happiness in a state
         # print key, happyState[key]
-        if happyState[key] > maximum:
+        if happyState[key] > maximum: 
             maximum = happyState[key]
 
-    for key in happyState.keys():
+    for key in happyState.keys():  #finds the happiest state
         if happyState[key]==maximum:
             print key
 
