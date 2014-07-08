@@ -26,5 +26,8 @@ def main():
     readData(tweet_file)    
 
 if __name__ == '__main__':
-    
-    main()
+    if len(sys.argv)==3:
+        main()
+    else:
+        print 'Please enter sentiment file and then tweet file in the format:'
+        print '$python happiest_state.py <sentiment_file> <tweet_file>'

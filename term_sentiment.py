@@ -9,12 +9,6 @@ class scoreCounter:
             term, score  = line.split("\t")  # The file is tab-delimited. "\t" means "tab character"
             self.scores[term] = int(score)  # Convert the score to an integer.
         
-def hw():
-    print 'Hello, world!'
-
-def lines(fp):
-    print str(len(fp.readlines()))
-
 def getScore(var, term):
     # print var.scores
     try:
@@ -56,5 +50,7 @@ def main():
     readData(var, tweet_file,sent_file)    
 
 if __name__ == '__main__':
-    
-    main()
+    if len(sys.argv)==3:
+        main()
+    else:
+        print 'Please enter sentiment file and then tweet file in the format: \n $python term_sentiment.py <sentiment_file> <tweet_file>'
