@@ -16,8 +16,9 @@ def readData(tweet_file):
             pass
 
     counter = collections.Counter(List)
-    for key in counter.keys():
-        print key.encode('utf-8'), counter[key]
+    mostCommon = counter.most_common()
+    for i in xrange(10):
+        print mostCommon[i][0], mostCommon[i][1]
 
 
         
@@ -26,8 +27,5 @@ def main():
     readData(tweet_file)    
 
 if __name__ == '__main__':
-    if len(sys.argv)==3:
-        main()
-    else:
-        print 'Please enter sentiment file and then tweet file in the format:'
-        print '$python happiest_state.py <sentiment_file> <tweet_file>'
+    
+    main()
